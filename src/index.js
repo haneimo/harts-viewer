@@ -650,23 +650,23 @@ function create() {
         // 各プレイヤーの手札の直後にプレイヤー名を配置
         switch(index) {
             case 0: // Alice（南）
-                nameX = pos.x;
-                nameY = pos.y + 50; // 手札の直後（下側）
+                nameX = pos.x - 180; // 手札の左端に合わせる
+                nameY = pos.y + 30; // 手札の直後（下側）
                 rotation = 0;
                 break;
             case 1: // Bob（西）
-                nameX = pos.x - 50; // 手札の直後（左側）
-                nameY = pos.y;
+                nameX = pos.x - 30; // 手札の直後（左側）
+                nameY = pos.y - 180; // 手札の上端に合わせる
                 rotation = Math.PI / 2; // 90度回転（縦書き風）
                 break;
             case 2: // Charlie（北）
-                nameX = pos.x;
-                nameY = pos.y - 50; // 手札の直後（上側）
+                nameX = pos.x + 100; // 手札の右端に合わせる
+                nameY = pos.y - 30; // 手札の直後（上側）
                 rotation = Math.PI; // 180度回転
                 break;
             case 3: // Dave（東）
-                nameX = pos.x + 50; // 手札の直後（右側）
-                nameY = pos.y;
+                nameX = pos.x + 30; // 手札の直後（右側）
+                nameY = pos.y + 100; // 手札の下端に合わせる
                 rotation = -Math.PI / 2; // -90度回転（縦書き風）
                 break;
         }
@@ -676,7 +676,7 @@ function create() {
             fill: '#ffffff',
             fontFamily: 'Arial',
             fontWeight: 'bold'
-        }).setOrigin(0.5).setRotation(rotation);
+        }).setOrigin(index === 0 ? 0 : index === 1 ? 0 : index === 2 ? 1 : 1, 0.5).setRotation(rotation);
         
         this.playerNames.push(nameText);
     });

@@ -38,7 +38,6 @@
       "currentPlayer": 0,
       "action": "round_start",
       "card": null,
-      "timestamp": -500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -145,7 +144,6 @@
         3,
         0
       ],
-      "timestamp": 500,
       "gameState": "swapping",
       "tricksWon": [
         0,
@@ -274,7 +272,6 @@
         3,
         0
       ],
-      "timestamp": 1500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -352,7 +349,6 @@
       "currentPlayer": 0,
       "action": "trick_start",
       "card": null,
-      "timestamp": 500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -430,7 +426,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_2",
-      "timestamp": 3500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -513,7 +508,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "C_3",
-      "timestamp": 4000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -600,7 +594,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "C_4",
-      "timestamp": 4500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -691,7 +684,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "C_8",
-      "timestamp": 5000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -805,7 +797,6 @@
           "player": 3
         }
       ],
-      "timestamp": 5500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -883,7 +874,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 6000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -961,7 +951,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_3",
-      "timestamp": 6500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1044,7 +1033,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "S_4",
-      "timestamp": 7000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1131,7 +1119,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "S_5",
-      "timestamp": 7500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1222,7 +1209,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "S_2",
-      "timestamp": 8000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1336,7 +1322,6 @@
           "player": 2
         }
       ],
-      "timestamp": 8500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1420,7 +1405,6 @@
       "currentPlayer": 1,
       "action": "trick_start",
       "card": null,
-      "timestamp": 9000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1498,7 +1482,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "H_3",
-      "timestamp": 9500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1581,7 +1564,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_4",
-      "timestamp": 10000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1668,7 +1650,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "H_5",
-      "timestamp": 10500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1759,7 +1740,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "H_2",
-      "timestamp": 11000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1873,7 +1853,6 @@
           "player": 0
         }
       ],
-      "timestamp": 11500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -1957,7 +1936,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 12000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2035,7 +2013,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_5",
-      "timestamp": 12500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2118,7 +2095,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_5",
-      "timestamp": 13000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2205,7 +2181,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_5",
-      "timestamp": 13500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2296,7 +2271,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_5",
-      "timestamp": 14000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2410,7 +2384,6 @@
           "player": 2
         }
       ],
-      "timestamp": 14500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2494,7 +2467,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 15000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2572,7 +2544,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_6",
-      "timestamp": 15500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2655,7 +2626,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_6",
-      "timestamp": 16000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2742,7 +2712,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_6",
-      "timestamp": 16500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2833,7 +2802,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_6",
-      "timestamp": 17000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -2947,7 +2915,6 @@
           "player": 2
         }
       ],
-      "timestamp": 17500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3031,7 +2998,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 18000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3109,7 +3075,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_7",
-      "timestamp": 18500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3192,7 +3157,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_7",
-      "timestamp": 19000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3279,7 +3243,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_7",
-      "timestamp": 19500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3370,7 +3333,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_7",
-      "timestamp": 20000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3484,7 +3446,6 @@
           "player": 2
         }
       ],
-      "timestamp": 20500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3568,7 +3529,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 21000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3646,7 +3606,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_8",
-      "timestamp": 21500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3729,7 +3688,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_8",
-      "timestamp": 22000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3816,7 +3774,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_8",
-      "timestamp": 22500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -3907,7 +3864,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_8",
-      "timestamp": 23000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4021,7 +3977,6 @@
           "player": 2
         }
       ],
-      "timestamp": 23500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4105,7 +4060,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 24000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4183,7 +4137,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_9",
-      "timestamp": 24500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4266,7 +4219,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_9",
-      "timestamp": 25000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4353,7 +4305,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_9",
-      "timestamp": 25500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4444,7 +4395,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_9",
-      "timestamp": 26000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4558,7 +4508,6 @@
           "player": 2
         }
       ],
-      "timestamp": 26500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4642,7 +4591,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 27000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4720,7 +4668,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_10",
-      "timestamp": 27500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4803,7 +4750,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_10",
-      "timestamp": 28000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4890,7 +4836,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_10",
-      "timestamp": 28500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -4981,7 +4926,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_10",
-      "timestamp": 29000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5095,7 +5039,6 @@
           "player": 2
         }
       ],
-      "timestamp": 29500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5179,7 +5122,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 30000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5257,7 +5199,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_J",
-      "timestamp": 30500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5340,7 +5281,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_J",
-      "timestamp": 31000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5427,7 +5367,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_J",
-      "timestamp": 31500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5518,7 +5457,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_J",
-      "timestamp": 32000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5632,7 +5570,6 @@
           "player": 2
         }
       ],
-      "timestamp": 32500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5716,7 +5653,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 33000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5794,7 +5730,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_Q",
-      "timestamp": 33500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5877,7 +5812,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_Q",
-      "timestamp": 34000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -5964,7 +5898,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_Q",
-      "timestamp": 34500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6055,7 +5988,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_Q",
-      "timestamp": 35000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6151,7 +6083,6 @@
       "action": "trick_won",
       "card": null,
       "winningPlayer": 3,
-      "timestamp": 35500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6235,7 +6166,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 36000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6313,7 +6243,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_K",
-      "timestamp": 36500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6396,7 +6325,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_K",
-      "timestamp": 37000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6483,7 +6411,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_K",
-      "timestamp": 37500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6574,7 +6501,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_K",
-      "timestamp": 38000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6688,7 +6614,6 @@
           "player": 2
         }
       ],
-      "timestamp": 38500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6772,7 +6697,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 39000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6850,7 +6774,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_A",
-      "timestamp": 39500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -6933,7 +6856,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_A",
-      "timestamp": 40000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -7020,7 +6942,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_A",
-      "timestamp": 40500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -7111,7 +7032,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_A",
-      "timestamp": 41000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -7207,7 +7127,6 @@
       "action": "trick_won",
       "card": null,
       "winningPlayer": 3,
-      "timestamp": 41500,
       "gameState": "finished",
       "tricksWon": [
         0,
@@ -7291,7 +7210,6 @@
       "currentPlayer": -1,
       "action": "show_result",
       "card": null,
-      "timestamp": 42500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -7381,7 +7299,6 @@
       "currentPlayer": 0,
       "action": "round_start",
       "card": null,
-      "timestamp": 42500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -7488,7 +7405,6 @@
         1,
         2
       ],
-      "timestamp": 44500,
       "gameState": "swapping",
       "tricksWon": [
         0,
@@ -7617,7 +7533,6 @@
         1,
         2
       ],
-      "timestamp": 45500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -7695,7 +7610,6 @@
       "currentPlayer": 0,
       "action": "trick_start",
       "card": null,
-      "timestamp": 44000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -7773,7 +7687,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "D_A",
-      "timestamp": 44500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -7856,7 +7769,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "H_9",
-      "timestamp": 47000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -7943,7 +7855,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_10",
-      "timestamp": 47500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8034,7 +7945,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_10",
-      "timestamp": 48000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8148,7 +8058,6 @@
           "player": 3
         }
       ],
-      "timestamp": 48500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8232,7 +8141,6 @@
       "currentPlayer": 1,
       "action": "trick_start",
       "card": null,
-      "timestamp": 49000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8310,7 +8218,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "S_7",
-      "timestamp": 49500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8393,7 +8300,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_A",
-      "timestamp": 50000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8480,7 +8386,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "H_3",
-      "timestamp": 50500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8571,7 +8476,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_4",
-      "timestamp": 51000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8685,7 +8589,6 @@
           "player": 0
         }
       ],
-      "timestamp": 51500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8769,7 +8672,6 @@
       "currentPlayer": 2,
       "action": "trick_start",
       "card": null,
-      "timestamp": 52000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8847,7 +8749,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "S_2",
-      "timestamp": 52500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -8930,7 +8831,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_A",
-      "timestamp": 53000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9017,7 +8917,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "D_K",
-      "timestamp": 53500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9108,7 +9007,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "C_A",
-      "timestamp": 54000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9222,7 +9120,6 @@
           "player": 1
         }
       ],
-      "timestamp": 54500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9306,7 +9203,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 55000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9384,7 +9280,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_3",
-      "timestamp": 55500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9467,7 +9362,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "S_K",
-      "timestamp": 56000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9554,7 +9448,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "S_8",
-      "timestamp": 56500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9645,7 +9538,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "S_J",
-      "timestamp": 57000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9759,7 +9651,6 @@
           "player": 2
         }
       ],
-      "timestamp": 57500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9843,7 +9734,6 @@
       "currentPlayer": 0,
       "action": "trick_start",
       "card": null,
-      "timestamp": 58000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -9921,7 +9811,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "D_2",
-      "timestamp": 58500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10004,7 +9893,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "S_Q",
-      "timestamp": 59000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10091,7 +9979,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "C_3",
-      "timestamp": 59500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10182,7 +10069,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "D_3",
-      "timestamp": 60000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10296,7 +10182,6 @@
           "player": 3
         }
       ],
-      "timestamp": 60500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10380,7 +10265,6 @@
       "currentPlayer": 1,
       "action": "trick_start",
       "card": null,
-      "timestamp": 61000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10458,7 +10342,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_10",
-      "timestamp": 61500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10541,7 +10424,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_5",
-      "timestamp": 62000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10628,7 +10510,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "H_2",
-      "timestamp": 62500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10719,7 +10600,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_8",
-      "timestamp": 63000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10833,7 +10713,6 @@
           "player": 0
         }
       ],
-      "timestamp": 63500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10917,7 +10796,6 @@
       "currentPlayer": 2,
       "action": "trick_start",
       "card": null,
-      "timestamp": 64000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -10995,7 +10873,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "C_10",
-      "timestamp": 64500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11078,7 +10955,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "H_8",
-      "timestamp": 65000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11165,7 +11041,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_K",
-      "timestamp": 65500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11256,7 +11131,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_9",
-      "timestamp": 66000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11370,7 +11244,6 @@
           "player": 1
         }
       ],
-      "timestamp": 66500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11454,7 +11327,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 67000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11532,7 +11404,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "C_7",
-      "timestamp": 67500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11615,7 +11486,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "H_4",
-      "timestamp": 68000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11702,7 +11572,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "S_9",
-      "timestamp": 68500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11793,7 +11662,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_J",
-      "timestamp": 69000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11907,7 +11775,6 @@
           "player": 2
         }
       ],
-      "timestamp": 69500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -11991,7 +11858,6 @@
       "currentPlayer": 0,
       "action": "trick_start",
       "card": null,
-      "timestamp": 70000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12069,7 +11935,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_2",
-      "timestamp": 70500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12152,7 +12017,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "S_5",
-      "timestamp": 71000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12239,7 +12103,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_K",
-      "timestamp": 71500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12330,7 +12193,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_4",
-      "timestamp": 72000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12444,7 +12306,6 @@
           "player": 3
         }
       ],
-      "timestamp": 72500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12528,7 +12389,6 @@
       "currentPlayer": 1,
       "action": "trick_start",
       "card": null,
-      "timestamp": 73000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12606,7 +12466,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_Q",
-      "timestamp": 73500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12689,7 +12548,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "C_9",
-      "timestamp": 74000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12776,7 +12634,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "D_6",
-      "timestamp": 74500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12867,7 +12724,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "H_7",
-      "timestamp": 75000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -12981,7 +12837,6 @@
           "player": 0
         }
       ],
-      "timestamp": 75500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13065,7 +12920,6 @@
       "currentPlayer": 2,
       "action": "trick_start",
       "card": null,
-      "timestamp": 76000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13143,7 +12997,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "D_8",
-      "timestamp": 76500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13226,7 +13079,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "C_Q",
-      "timestamp": 77000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13313,7 +13165,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "S_6",
-      "timestamp": 77500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13404,7 +13255,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "H_6",
-      "timestamp": 78000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13518,7 +13368,6 @@
           "player": 1
         }
       ],
-      "timestamp": 78500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13602,7 +13451,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 79000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13680,7 +13528,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "D_4",
-      "timestamp": 79500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13763,7 +13610,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_J",
-      "timestamp": 80000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13850,7 +13696,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "C_6",
-      "timestamp": 80500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -13941,7 +13786,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "D_J",
-      "timestamp": 81000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14055,7 +13899,6 @@
           "player": 2
         }
       ],
-      "timestamp": 81500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14139,7 +13982,6 @@
       "currentPlayer": 0,
       "action": "trick_start",
       "card": null,
-      "timestamp": 82000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14217,7 +14059,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_5",
-      "timestamp": 82500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14300,7 +14141,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "H_Q",
-      "timestamp": 83000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14387,7 +14227,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "D_7",
-      "timestamp": 83500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14478,7 +14317,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "D_5",
-      "timestamp": 84000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14592,7 +14430,6 @@
           "player": 3
         }
       ],
-      "timestamp": 84500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14676,7 +14513,6 @@
       "currentPlayer": 0,
       "action": "round_end",
       "card": null,
-      "timestamp": 85000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14760,7 +14596,6 @@
       "currentPlayer": -1,
       "action": "show_result",
       "card": null,
-      "timestamp": 85500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14850,7 +14685,6 @@
       "currentPlayer": 0,
       "action": "round_start",
       "card": null,
-      "timestamp": 86000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -14957,7 +14791,6 @@
         0,
         1
       ],
-      "timestamp": 88000,
       "gameState": "swapping",
       "tricksWon": [
         0,
@@ -15086,7 +14919,6 @@
         0,
         1
       ],
-      "timestamp": 89000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -15164,7 +14996,6 @@
       "currentPlayer": 0,
       "action": "trick_start",
       "card": null,
-      "timestamp": 87500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -15242,7 +15073,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_8",
-      "timestamp": 88000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -15325,7 +15155,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "C_9",
-      "timestamp": 90500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -15412,7 +15241,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "D_K",
-      "timestamp": 91000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -15503,7 +15331,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "C_6",
-      "timestamp": 91500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -15617,7 +15444,6 @@
           "player": 3
         }
       ],
-      "timestamp": 92000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -15701,7 +15527,6 @@
       "currentPlayer": 1,
       "action": "trick_start",
       "card": null,
-      "timestamp": 92500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -15779,7 +15604,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "C_J",
-      "timestamp": 93000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -15862,7 +15686,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_2",
-      "timestamp": 93500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -15949,7 +15772,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "H_9",
-      "timestamp": 94000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16040,7 +15862,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "D_6",
-      "timestamp": 94500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16154,7 +15975,6 @@
           "player": 0
         }
       ],
-      "timestamp": 95000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16238,7 +16058,6 @@
       "currentPlayer": 2,
       "action": "trick_start",
       "card": null,
-      "timestamp": 95500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16316,7 +16135,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "S_A",
-      "timestamp": 96000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16399,7 +16217,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "D_5",
-      "timestamp": 96500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16486,7 +16303,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "H_10",
-      "timestamp": 97000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16577,7 +16393,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "H_4",
-      "timestamp": 97500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16691,7 +16506,6 @@
           "player": 1
         }
       ],
-      "timestamp": 98000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16775,7 +16589,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 98500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16853,7 +16666,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_9",
-      "timestamp": 99000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -16936,7 +16748,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "H_K",
-      "timestamp": 99500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17023,7 +16834,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_3",
-      "timestamp": 100000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17114,7 +16924,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "D_10",
-      "timestamp": 100500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17228,7 +17037,6 @@
           "player": 2
         }
       ],
-      "timestamp": 101000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17312,7 +17120,6 @@
       "currentPlayer": 0,
       "action": "trick_start",
       "card": null,
-      "timestamp": 101500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17390,7 +17197,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "H_8",
-      "timestamp": 102000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17473,7 +17279,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "H_5",
-      "timestamp": 102500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17560,7 +17365,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_A",
-      "timestamp": 103000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17651,7 +17455,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_10",
-      "timestamp": 103500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17765,7 +17568,6 @@
           "player": 3
         }
       ],
-      "timestamp": 104000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17849,7 +17651,6 @@
       "currentPlayer": 1,
       "action": "trick_start",
       "card": null,
-      "timestamp": 104500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -17927,7 +17728,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "C_5",
-      "timestamp": 105000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18010,7 +17810,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "C_7",
-      "timestamp": 105500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18097,7 +17896,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_7",
-      "timestamp": 106000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18188,7 +17986,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "S_K",
-      "timestamp": 106500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18302,7 +18099,6 @@
           "player": 0
         }
       ],
-      "timestamp": 107000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18386,7 +18182,6 @@
       "currentPlayer": 2,
       "action": "trick_start",
       "card": null,
-      "timestamp": 107500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18464,7 +18259,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "D_8",
-      "timestamp": 108000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18547,7 +18341,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_2",
-      "timestamp": 108500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18634,7 +18427,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "D_J",
-      "timestamp": 109000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18725,7 +18517,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "C_2",
-      "timestamp": 109500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18839,7 +18630,6 @@
           "player": 1
         }
       ],
-      "timestamp": 110000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -18923,7 +18713,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 110500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19001,7 +18790,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_4",
-      "timestamp": 111000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19084,7 +18872,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_3",
-      "timestamp": 111500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19171,7 +18958,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "H_3",
-      "timestamp": 112000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19262,7 +19048,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "C_A",
-      "timestamp": 112500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19376,7 +19161,6 @@
           "player": 2
         }
       ],
-      "timestamp": 113000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19460,7 +19244,6 @@
       "currentPlayer": 0,
       "action": "trick_start",
       "card": null,
-      "timestamp": 113500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19538,7 +19321,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_10",
-      "timestamp": 114000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19621,7 +19403,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "S_Q",
-      "timestamp": 114500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19708,7 +19489,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "S_6",
-      "timestamp": 115000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19799,7 +19579,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "D_9",
-      "timestamp": 115500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19913,7 +19692,6 @@
           "player": 3
         }
       ],
-      "timestamp": 116000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -19997,7 +19775,6 @@
       "currentPlayer": 1,
       "action": "trick_start",
       "card": null,
-      "timestamp": 116500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20075,7 +19852,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_7",
-      "timestamp": 117000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20158,7 +19934,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "C_K",
-      "timestamp": 117500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20245,7 +20020,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_8",
-      "timestamp": 118000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20336,7 +20110,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "D_Q",
-      "timestamp": 118500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20450,7 +20223,6 @@
           "player": 0
         }
       ],
-      "timestamp": 119000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20534,7 +20306,6 @@
       "currentPlayer": 2,
       "action": "trick_start",
       "card": null,
-      "timestamp": 119500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20612,7 +20383,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "D_A",
-      "timestamp": 120000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20695,7 +20465,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "C_Q",
-      "timestamp": 120500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20782,7 +20551,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "S_3",
-      "timestamp": 121000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20873,7 +20641,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "D_4",
-      "timestamp": 121500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -20987,7 +20754,6 @@
           "player": 1
         }
       ],
-      "timestamp": 122000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21071,7 +20837,6 @@
       "currentPlayer": 3,
       "action": "trick_start",
       "card": null,
-      "timestamp": 122500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21149,7 +20914,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "S_5",
-      "timestamp": 123000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21232,7 +20996,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "D_2",
-      "timestamp": 123500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21319,7 +21082,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "H_6",
-      "timestamp": 124000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21410,7 +21172,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "S_J",
-      "timestamp": 124500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21524,7 +21285,6 @@
           "player": 2
         }
       ],
-      "timestamp": 125000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21608,7 +21368,6 @@
       "currentPlayer": 0,
       "action": "trick_start",
       "card": null,
-      "timestamp": 125500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21686,7 +21445,6 @@
       "currentPlayer": 0,
       "action": "play_card",
       "card": "C_4",
-      "timestamp": 126000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21769,7 +21527,6 @@
       "currentPlayer": 1,
       "action": "play_card",
       "card": "H_Q",
-      "timestamp": 126500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21856,7 +21613,6 @@
       "currentPlayer": 2,
       "action": "play_card",
       "card": "H_7",
-      "timestamp": 127000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -21947,7 +21703,6 @@
       "currentPlayer": 3,
       "action": "play_card",
       "card": "H_J",
-      "timestamp": 127500,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -22061,7 +21816,6 @@
           "player": 3
         }
       ],
-      "timestamp": 128000,
       "gameState": "playing",
       "tricksWon": [
         0,
@@ -22145,7 +21899,6 @@
       "currentPlayer": 0,
       "action": "round_end",
       "card": null,
-      "timestamp": 128500,
       "gameState": "finished",
       "tricksWon": [
         0,
@@ -22229,7 +21982,6 @@
       "currentPlayer": -1,
       "action": "show_result",
       "card": null,
-      "timestamp": 129000,
       "gameState": "finished",
       "tricksWon": [
         0,
