@@ -206,17 +206,17 @@
         }
 
         .timeline-controls {
-            padding: 15px 20px;
+            padding: 8px 20px;
             background: rgba(0, 0, 0, 0.3);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .timeline {
             width: 100%;
-            height: 6px;
+            height: 4px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            margin: 10px 0;
+            border-radius: 2px;
+            margin: 6px 0;
             position: relative;
             cursor: pointer;
         }
@@ -224,7 +224,7 @@
         .timeline-progress {
             height: 100%;
             background: linear-gradient(90deg, #4facfe, #00f2fe);
-            border-radius: 3px;
+            border-radius: 2px;
             width: 0%;
             transition: width 0.1s ease;
         }
@@ -307,10 +307,26 @@
                 </div>
             </div>
 
-            <div class="sidebar">
+            <!-- サイドバー折りたたみボタン -->
+            <div style="position: relative;">
+                <button @click="toggleNavigation()" 
+                        style="position: absolute; top: 10px; right: 5px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); color: white; border-radius: 3px; padding: 4px 8px; font-size: 14px; cursor: pointer; z-index: 10; transition: all 0.3s ease; backdrop-filter: blur(5px);"
+                        :style="{ transform: navigationCollapsed ? 'rotate(180deg)' : 'rotate(0deg)', right: navigationCollapsed ? '5px' : '305px' }"
+                        title="サイドバーを折りたたむ/展開">
+                    ◀
+                </button>
+
+                <div class="sidebar" 
+                     x-show="!navigationCollapsed" 
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 transform translate-x-full"
+                     x-transition:enter-end="opacity-100 transform translate-x-0"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 transform translate-x-0"
+                     x-transition:leave-end="opacity-0 transform translate-x-full">
                 <div class="sidebar-section">
                     <h3>ナビゲーション・コントロール</h3>
-                    <!-- クイックナビゲーション -->
+                        <!-- クイックナビゲーション -->
                     <div style="margin-bottom: 15px;">
                         <h4 style="font-size: 13px; margin-bottom: 10px; color: rgba(255, 255, 255, 0.9);">クイック移動</h4>
                         <div style="margin-bottom: 10px;">
@@ -402,8 +418,9 @@
                             </template>
                         </div>
                     </div>
-                </div>
-                <div class="sidebar-section">
+                    </div>
+                    
+                    <div class="sidebar-section">
                     <h3>ゲーム情報</h3>
                         <div class="info-item">
                             <span class="info-label">ゲームタイプ:</span>
@@ -423,15 +440,13 @@
                         </div>
                     </div>
                 </div>
-
-                
             </div>
         </div>
 
                 <div class="timeline-controls">
             <div class="timeline-info">
-                <span x-text="formatTime(currentTurnIndex)">00:00</span>
-                <span x-text="formatTime(gameData?.turns?.length || 0)">00:00</span>
+                <span x-text="`${currentTurnIndex + 1} / ${gameData?.turns?.length || 0}`">1 / 0</span>
+                <span x-text="formatPercent(currentTurnIndex, gameData?.turns?.length || 0)">0%</span>
             </div>
             <div class="timeline" @click="seekTimeline($event)">
                 <div class="timeline-progress" :style="`width: ${timelineProgress}%`"></div>

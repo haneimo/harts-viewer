@@ -110,8 +110,12 @@ function gameController() {
         jumpToRound: '',
         keyboardListener: null, // キーボードイベントリスナーの参照を保持
         lastKeyTime: 0, // デバウンス用のタイムスタンプ
+        lastClickTime: 0, // クリック用デバウンスタイムスタンプ
+        isProcessingClick: false, // クリック処理中フラグ
+        canvasClickHandler: null, // canvasクリックハンドラーの参照
         jumpToStep: '',
         jumpToRound: '',
+        navigationCollapsed: false, // ナビゲーションボックスの折りたたみ状態
         
         // 計算プロパティ
         get hasData() {
@@ -160,10 +164,56 @@ function gameController() {
             window.addEventListener('phaserReady', () => {
                 console.log('Received phaserReady event, loading demo data...');
                 this.loadDemoData();
+                // Phaserのcanvasにクリックイベントを追加
+                this.setupCanvasClickHandler();
             });
             
             // キーボードショートカットの設定
             this.setupKeyboardShortcuts();
+        },
+        
+        // canvasのクリックイベントハンドラーをセットアップ
+        setupCanvasClickHandler() {
+            // 既存のハンドラーがあれば削除
+            this.removeCanvasClickHandler();
+            
+            // 少し遅らせてcanvas要素が完全に作成されるのを待つ
+            setTimeout(() => {
+                const canvas = document.querySelector('#game-container canvas');
+                if (canvas) {
+                    console.log('Setting up canvas click handler');
+                    
+                    // 一意のハンドラー関数を作成
+                    this.canvasClickHandler = (event) => this.handleCanvasClick(event);
+                    
+                    // クリックイベントを登録（passive: falseで明示的に設定）
+                    canvas.addEventListener('click', this.canvasClickHandler, { passive: false });
+                    
+                    // タッチデバイス用のハンドラーも一意に作成
+                    this.canvasTouchHandler = (event) => {
+                        event.preventDefault();
+                        this.handleCanvasClick(event.changedTouches[0]);
+                    };
+                    
+                    canvas.addEventListener('touchend', this.canvasTouchHandler, { passive: false });
+                    
+                    console.log('Canvas event handlers registered');
+                } else {
+                    console.warn('Canvas element not found for click handler setup');
+                }
+            }, 100);
+        },
+        
+        // canvasのクリックイベントハンドラーを削除
+        removeCanvasClickHandler() {
+            const canvas = document.querySelector('#game-container canvas');
+            if (canvas && this.canvasClickHandler) {
+                canvas.removeEventListener('click', this.canvasClickHandler);
+                canvas.removeEventListener('touchend', this.canvasTouchHandler);
+                this.canvasClickHandler = null;
+                this.canvasTouchHandler = null;
+                console.log('Canvas event handlers removed');
+            }
         },
         
         // キーボードショートカットの設定
@@ -419,6 +469,7 @@ function gameController() {
             this.jumpToStep = '';
             this.jumpToRound = '';
             this.updateCurrentPlayer();
+            this.updateGameDisplay(); // ゲーム画面も更新
             console.log('Replay reset');
         },
         
@@ -452,6 +503,12 @@ function gameController() {
                 this.currentTurnIndex--;
                 this.updateCurrentPlayer();
                 this.updateGameDisplay();
+                
+                // Alpine.jsのリアクティブ更新を強制
+                this.$nextTick(() => {
+                    console.log('Alpine.js state updated after previousStep');
+                });
+                
                 console.log(`1手戻す: ターン ${this.currentTurnIndex + 1}`);
             } else {
                 console.log('Cannot go back further - at first turn');
@@ -464,6 +521,12 @@ function gameController() {
                 this.currentTurnIndex++;
                 this.updateCurrentPlayer();
                 this.updateGameDisplay();
+                
+                // Alpine.jsのリアクティブ更新を強制
+                this.$nextTick(() => {
+                    console.log('Alpine.js state updated after nextStep');
+                });
+                
                 console.log(`1手進む: ターン ${this.currentTurnIndex + 1}`);
             } else {
                 console.log('Cannot go forward further - at last turn or no data');
@@ -553,12 +616,83 @@ function gameController() {
             return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         },
         
+        // パーセント表示フォーマット
+        formatPercent(current, total) {
+            if (!total || total === 0) return '0%';
+            const percent = Math.round((current / (total - 1)) * 100);
+            return `${percent}%`;
+        },
+        
+        // ナビゲーションボックスの折りたたみ状態をトグル
+        toggleNavigation() {
+            this.navigationCollapsed = !this.navigationCollapsed;
+            console.log('Navigation toggle:', this.navigationCollapsed ? 'collapsed' : 'expanded');
+        },
+
+        // canvasのクリックイベントを処理
+        handleCanvasClick(event) {
+            // デバウンス処理（300ms間隔でクリックされた場合は無視）
+            const now = Date.now();
+            if (now - this.lastClickTime < 300) {
+                console.log('Click ignored due to debounce');
+                return;
+            }
+            
+            // 処理中の場合は無視
+            if (this.isProcessingClick) {
+                console.log('Click ignored - already processing');
+                return;
+            }
+            
+            this.lastClickTime = now;
+            this.isProcessingClick = true;
+            
+            console.log('Canvas clicked via Alpine.js');
+            
+            try {
+                const canvas = document.querySelector('#game-container canvas');
+                if (!canvas) {
+                    console.warn('Canvas not found');
+                    return;
+                }
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = (event.clientX || event.pageX) - rect.left;
+                const y = (event.clientY || event.pageY) - rect.top;
+                
+                console.log('Click position:', x, y, 'Canvas size:', rect.width, 'x', rect.height);
+                
+                // canvasの幅の半分を境界として判定
+                const halfWidth = rect.width / 2;
+                
+                if (x < halfWidth) {
+                    // 左半分クリック：前の手番に戻る
+                    console.log('Left half clicked - going to previous step');
+                    this.previousStep();
+                } else {
+                    // 右半分クリック：次の手番に進む
+                    console.log('Right half clicked - going to next step');
+                    this.nextStep();
+                }
+            } catch (error) {
+                console.error('Error in handleCanvasClick:', error);
+            } finally {
+                // 処理完了を少し遅らせて設定（Alpine.jsの更新処理を待つ）
+                setTimeout(() => {
+                    this.isProcessingClick = false;
+                }, 100);
+            }
+        },
+
         // クリーンアップ処理
         destroy() {
             if (this.keyboardListener) {
                 document.removeEventListener('keydown', this.keyboardListener, { capture: true });
                 this.keyboardListener = null;
             }
+            
+            // canvasクリックハンドラーも削除
+            this.removeCanvasClickHandler();
         }
     };
     
@@ -632,53 +766,130 @@ function create() {
     this.add.image(400, 300, 'table');
     
     // プレイヤーエリアの設定（4人プレイヤー用）
-    // 東西南北の配置を明確にする
+    // プレイヤーエリアの設定（4人プレイヤー用）
     this.playerPositions = [
-        { x: 400, y: 510, name: 'Alice (南)', rotation: 0 }, // Player 0: Alice（南）- 10px下に移動
-        { x: 110, y: 300, name: 'Bob (西)', rotation: Math.PI/2 }, // Player 1: Bob（西）- 10px左に移動
-        { x: 400, y: 90, name: 'Charlie (北)', rotation: Math.PI }, // Player 2: Charlie（北）- 10px上に移動
-        { x: 690, y: 300, name: 'Dave (東)', rotation: -Math.PI/2 }  // Player 3: Dave（東）- 10px右に移動
+        { x: 400, y: 510, rotation: 0 }, // Player 0: 南
+        { x: 110, y: 300, rotation: Math.PI/2 }, // Player 1: 西
+        { x: 400, y: 90, rotation: Math.PI }, // Player 2: 北
+        { x: 690, y: 300, rotation: -Math.PI/2 }  // Player 3: 東
     ];
     
     console.log('Player positions configured:', this.playerPositions);
     
-    // プレイヤー名を表示
+    // ラウンド番号表示を左上に追加
+    this.roundNumberText = this.add.text(20, 20, 'Round 1', {
+        fontSize: '20px',
+        fill: '#ffffff',
+        fontFamily: 'Arial',
+        fontWeight: 'bold',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        padding: { x: 10, y: 5 }
+    }).setOrigin(0, 0);
+    
+    // プレイヤー名表示を初期化（空の配列として作成）
     this.playerNames = [];
-    this.playerPositions.forEach((pos, index) => {
-        let nameX, nameY, rotation;
+    
+    // プレイヤー名を更新する関数を追加
+    this.updatePlayerNames = function(gameData) {
+        console.log('=== updatePlayerNames START ===');
         
-        // 各プレイヤーの手札の直後にプレイヤー名を配置
+        if (!gameData || !gameData.players) {
+            console.warn('No game data or players found for name update');
+            return;
+        }
+        
+        // 既存のプレイヤー名テキストをクリア
+        scene.playerNames.forEach(nameText => {
+            if (nameText) {
+                nameText.destroy();
+            }
+        });
+        scene.playerNames = [];
+        
+        // 各プレイヤーの名前を表示（中央揃え）
+        gameData.players.forEach((player, index) => {
+            const pos = scene.playerPositions[index];
+            const playerName = player.name || `Player ${index + 1}`;
+            
+            let nameX, nameY, rotation;
+            
+            // 各プレイヤーの手札の近くに名前を配置（中央揃え）
+            switch(index) {
+                case 0: // 南プレイヤー
+                    nameX = pos.x; // 中央
+                    nameY = pos.y + 60; // 手札の下側
+                    rotation = 0;
+                    break;
+                case 1: // 西プレイヤー
+                    nameX = pos.x - 60; // 手札の左側
+                    nameY = pos.y; // 中央
+                    rotation = Math.PI / 2; // 90度回転（縦書き風）
+                    break;
+                case 2: // 北プレイヤー
+                    nameX = pos.x; // 中央
+                    nameY = pos.y - 60; // 手札の上側
+                    rotation = Math.PI; // 180度回転
+                    break;
+                case 3: // 東プレイヤー
+                    nameX = pos.x + 60; // 手札の右側
+                    nameY = pos.y; // 中央
+                    rotation = -Math.PI / 2; // -90度回転（縦書き風）
+                    break;
+            }
+            
+            const nameText = scene.add.text(nameX, nameY, playerName, {
+                fontSize: '16px',
+                fill: '#ffffff',
+                fontFamily: 'Arial',
+                fontWeight: 'bold'
+            }).setOrigin(0.5, 0.5).setRotation(rotation); // 中央揃え
+            
+            scene.playerNames.push(nameText);
+        });
+        
+        console.log('Player names updated:', gameData.players.map(p => p.name));
+        console.log('=== updatePlayerNames END ===');
+    };
+    
+    // プレイヤー得点表示を追加
+    this.playerScores = [];
+    this.playerPositions.forEach((pos, index) => {
+        let scoreX, scoreY, scoreRotation;
+        
+        // 各プレイヤーの得点表示位置（名前の反対側）
         switch(index) {
-            case 0: // Alice（南）
-                nameX = pos.x - 180; // 手札の左端に合わせる
-                nameY = pos.y + 30; // 手札の直後（下側）
-                rotation = 0;
+            case 0: // Alice（南）- 名前が左寄せなので得点は右寄せ
+                scoreX = pos.x + 180; // 手札の右端に合わせる
+                scoreY = pos.y + 30; // 手札の直後（下側）
+                scoreRotation = 0;
                 break;
-            case 1: // Bob（西）
-                nameX = pos.x - 30; // 手札の直後（左側）
-                nameY = pos.y - 180; // 手札の上端に合わせる
-                rotation = Math.PI / 2; // 90度回転（縦書き風）
+            case 1: // Bob（西）- 名前が上寄せなので得点は下寄せ
+                scoreX = pos.x - 30; // 手札の直後（左側）
+                scoreY = pos.y + 180; // 手札の下端に合わせる
+                scoreRotation = Math.PI / 2; // 90度回転（縦書き風）
                 break;
-            case 2: // Charlie（北）
-                nameX = pos.x + 100; // 手札の右端に合わせる
-                nameY = pos.y - 30; // 手札の直後（上側）
-                rotation = Math.PI; // 180度回転
+            case 2: // Charlie（北）- 名前が右寄せなので得点は左寄せ
+                scoreX = pos.x - 150; // 手札の左端に合わせる
+                scoreY = pos.y - 30; // 手札の直後（上側）
+                scoreRotation = Math.PI; // 180度回転
                 break;
-            case 3: // Dave（東）
-                nameX = pos.x + 30; // 手札の直後（右側）
-                nameY = pos.y + 100; // 手札の下端に合わせる
-                rotation = -Math.PI / 2; // -90度回転（縦書き風）
+            case 3: // Dave（東）- 名前が下寄せなので得点は上寄せ
+                scoreX = pos.x + 30; // 手札の直後（右側）
+                scoreY = pos.y - 150; // 手札の上端に合わせる
+                scoreRotation = -Math.PI / 2; // -90度回転（縦書き風）
                 break;
         }
         
-        const nameText = this.add.text(nameX, nameY, pos.name, {
-            fontSize: '16px',
-            fill: '#ffffff',
+        const scoreText = this.add.text(scoreX, scoreY, '0 pt', {
+            fontSize: '14px',
+            fill: '#ffff00', // 黄色で表示
             fontFamily: 'Arial',
-            fontWeight: 'bold'
-        }).setOrigin(index === 0 ? 0 : index === 1 ? 0 : index === 2 ? 1 : 1, 0.5).setRotation(rotation);
+            fontWeight: 'bold',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            padding: { x: 4, y: 2 }
+        }).setOrigin(index === 0 ? 1 : index === 1 ? 1 : index === 2 ? 0 : 0, 0.5).setRotation(scoreRotation);
         
-        this.playerNames.push(nameText);
+        this.playerScores.push(scoreText);
     });
     
     // カードスプライトのグループを作成
@@ -736,6 +947,14 @@ function create() {
         // 現在のターン情報を取得（Alpine.jsから）
         const currentTurnIndex = window.gameController ? window.gameController.currentTurnIndex : 0;
         console.log('Current turn index:', currentTurnIndex);
+        
+        // ラウンド番号を更新
+        const currentTurn = gameData.turns && gameData.turns[currentTurnIndex];
+        if (currentTurn && currentTurn.roundNumber && scene.roundNumberText) {
+            const roundNumber = currentTurn.roundNumber;
+            scene.roundNumberText.setText(`Round ${roundNumber}`);
+            console.log('Round number updated:', roundNumber);
+        }
         
         // 手札を描画
         console.log('Drawing hands for', gameData.players.length, 'players');
@@ -851,7 +1070,54 @@ function create() {
         // プレイされたカードを中央に表示
         scene.displayPlayedCards(gameData, currentTurnIndex);
         
+        // プレイヤーのペナルティポイントを更新
+        scene.updatePlayerScores(gameData, currentTurnIndex);
+        
+        // プレイヤー名を更新（初回ロード時に実行）
+        if (scene.playerNames.length === 0) {
+            scene.updatePlayerNames(gameData);
+        }
+        
         console.log('=== updatePlayerHands END ===');
+    };
+    
+    // プレイヤーのペナルティポイントを更新する関数
+    this.updatePlayerScores = function(gameData, currentTurnIndex) {
+        console.log('=== updatePlayerScores START ===');
+        
+        if (!gameData || !gameData.turns || !scene.playerScores) {
+            console.warn('Missing game data, turns, or playerScores');
+            return;
+        }
+        
+        // 現在のターンから累計ペナルティポイントを取得
+        let playerPenaltyPoints = [0, 0, 0, 0];
+        let playerGamePenaltyPoints = [0, 0, 0, 0];
+        
+        if (currentTurnIndex >= 0 && currentTurnIndex < gameData.turns.length) {
+            const currentTurn = gameData.turns[currentTurnIndex];
+            if (currentTurn) {
+                if (currentTurn.cumulativePenaltyPoints) {
+                    playerPenaltyPoints = currentTurn.cumulativePenaltyPoints.slice();
+                }
+                if (currentTurn.cumulativeGamePenaltyPoints) {
+                    playerGamePenaltyPoints = currentTurn.cumulativeGamePenaltyPoints.slice();
+                }
+            }
+        }
+        
+        // 各プレイヤーのスコア表示を更新（ラウンド累積/ゲーム累積 pt形式）
+        scene.playerScores.forEach((scoreText, playerIndex) => {
+            if (scoreText && playerIndex < playerPenaltyPoints.length && playerIndex < playerGamePenaltyPoints.length) {
+                const roundPoints = playerPenaltyPoints[playerIndex];
+                const gamePoints = playerGamePenaltyPoints[playerIndex];
+                scoreText.setText(`${roundPoints}/${gamePoints} pt`);
+            }
+        });
+        
+        console.log('Player round penalty points:', playerPenaltyPoints);
+        console.log('Player game penalty points:', playerGamePenaltyPoints);
+        console.log('=== updatePlayerScores END ===');
     };
     
     // プレイされたカードを中央に表示する関数
@@ -940,11 +1206,11 @@ function create() {
         
         console.log('Current trick cards:', currentTrickCards);
         
-        // trick_wonアクションの場合、勝利カードを特定
+        // trick_wonアクションの場合、データ中のwinningPlayerを使用
         let winningPlayer = null;
         if (currentTurn && currentTurn.action === 'trick_won' && currentTurn.winningPlayer !== undefined) {
             winningPlayer = currentTurn.winningPlayer;
-            console.log(`Winning player: ${winningPlayer}`);
+            console.log(`Winning player from data: ${winningPlayer}`);
         }
         
         // プレイされたカードを中央に配置
@@ -989,31 +1255,31 @@ function create() {
                 const textColor = (parsedCard.suit === 'H' || parsedCard.suit === 'D' || parsedCard.suit === 'hearts' || parsedCard.suit === 'diamonds') ? '#ff0000' : '#000000';
                 
                 // 左上のスートラベル（コンテナの原点0,0を基準）
-                const suitLabel = scene.add.text(-30, -44, suitSymbol, {
+                const suitLabel = scene.add.text(-30, -48, suitSymbol, {
                     fontSize: '18px',
                     fill: textColor,
                     fontFamily: 'Arial',
                     fontWeight: 'bold',
                     backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                    padding: { x: 2, y: 1 },
+                    padding: { x: 2, y: 0 },
                     align: 'center'
                 }).setOrigin(0);
                 
                 // 左上の値ラベル（コンテナの原点0,0を基準）
                 const valueLabel = scene.add.text(-30, -28, parsedCard.value, {
-                    fontSize: '13px',
+                    fontSize: '16px',
                     fill: textColor,
                     fontFamily: 'Arial',
                     fontWeight: 'bold',
                     backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                    padding: { x: 2, y: 1 },
+                    padding: { x: 2, y: 0 },
                     align: 'center'
                 }).setOrigin(0);
                 
                 // カード中央のテキスト（コンテナの原点0,0を基準）
                 const cardValue = `${getSuitSymbol(parsedCard.suit)}${parsedCard.value}`;
                 const centerText = scene.add.text(0, 0, cardValue, {
-                    fontSize: '18px',
+                    fontSize: '28px',
                     fill: textColor,
                     fontFamily: 'Arial',
                     fontWeight: 'bold'
@@ -1043,16 +1309,8 @@ function create() {
                     console.log(`Added winning border for player ${cardData.player}`);
                 }
                 
-                // プレイヤー表示
-                const playerLabel = scene.add.text(position.x, position.y + 60, `P${cardData.player + 1}`, {
-                    fontSize: '10px',
-                    fill: '#ffffff',
-                    fontFamily: 'Arial'
-                }).setOrigin(0.5);
-                
                 // グループに追加
                 scene.playedCardsGroup.add(playedCardContainer);
-                scene.playedCardsGroup.add(playerLabel);
                 
                 console.log(`Added played card for player ${cardData.player}:`, cardData.card);
                 
@@ -1245,32 +1503,6 @@ function create() {
             scene.resultInfoGroup.add(playerResult);
         });
         
-        // 最終ラウンドの場合、勝者を表示
-        if (turnData.roundNumber === 3) {
-            const minScore = Math.min(...turnData.cumulativeScores);
-            const winners = [];
-            turnData.cumulativeScores.forEach((score, index) => {
-                if (score === minScore) {
-                    winners.push(playerNames[index]);
-                }
-            });
-            
-            const winnerText = winners.length === 1 
-                ? `🎉 ${winners[0]} の勝利！ 🎉`
-                : `🎉 ${winners.join('、')} の同点勝利！ 🎉`;
-                
-            const winnerDisplay = scene.add.text(centerX, centerY + 50, 
-                winnerText, {
-                fontSize: '20px',
-                fill: '#FFD700',
-                fontFamily: 'Arial',
-                fontWeight: 'bold',
-                backgroundColor: 'rgba(255, 0, 0, 0.3)',
-                padding: { x: 15, y: 8 }
-            }).setOrigin(0.5);
-            scene.resultInfoGroup.add(winnerDisplay);
-        }
-        
         console.log('=== displayRoundResult END ===');
     };
     
@@ -1282,6 +1514,10 @@ function create() {
     
     // シーンの初期化完了を通知
     console.log('Phaser scene initialization completed');
+    
+    // クリックイベントはAlpine.js側で処理
+    
+    console.log('Game canvas click handler added');
     
     // デモデータを自動ロード（シーン初期化完了後）
     setTimeout(() => {
@@ -1303,42 +1539,6 @@ function create() {
         }
     }, 100);
 };
-
-// 勝利カードを判定する関数
-function determineWinningCard(trickCards) {
-    if (trickCards.length === 0) return null;
-    
-    // 最初にプレイされたカードのスートがリードスート
-    const firstCard = parseCardString(trickCards[0].card);
-    const leadSuit = firstCard.suit;
-    console.log('Lead suit:', leadSuit);
-    
-    // リードスートのカードのみを考慮
-    const followSuitCards = trickCards.filter(cardData => {
-        const parsedCard = parseCardString(cardData.card);
-        return parsedCard.suit === leadSuit;
-    });
-    
-    if (followSuitCards.length === 0) return trickCards[0]; // エラー処理
-    
-    // カードの強さを判定する関数
-    function getCardStrength(cardStr) {
-        const card = parseCardString(cardStr);
-        const valueOrder = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-        return valueOrder.indexOf(card.value);
-    }
-    
-    // 最も強いカードを見つける
-    let winningCard = followSuitCards[0];
-    for (let i = 1; i < followSuitCards.length; i++) {
-        if (getCardStrength(followSuitCards[i].card) > getCardStrength(winningCard.card)) {
-            winningCard = followSuitCards[i];
-        }
-    }
-    
-    console.log('Winning card:', winningCard);
-    return winningCard;
-}
 
 // update関数の実装
 function update() {
