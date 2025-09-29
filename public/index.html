@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harts Game Replay Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        <div class="container" x-data="gameController()" x-init="init()">>   <div class="container" x-data="gameController()" x-init="init()">>>       box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 300;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-step {
+            min-width: 40px;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .btn-step:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            position: relative;
+        }
+
+        .game-area {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        #game-container {
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-height: calc(100vh - 120px); /* ヘッダー分を除いた高さ */
+            max-width: 100%;
+        }
+        
+        #game-container canvas {
+            max-height: calc(100vh - 120px); /* ヘッダー分を除いた高さ */
+            max-width: 100%;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-section {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-section h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .game-info {
+            flex: 1;
+        }
+
+        .info-item {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .info-value {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .player-list {
+            list-style: none;
+        }
+
+        .player-item {
+            padding: 8px 12px;
+            margin-bottom: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .player-item.active {
+            background: rgba(79, 172, 254, 0.2);
+            border: 1px solid rgba(79, 172, 254, 0.5);
+            box-shadow: 0 2px 8px rgba(79, 172, 254, 0.3);
+        }
+
+        .player-name {
+            font-size: 14px;
+        }
+
+        .player-score {
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .timeline-controls {
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin: 10px 0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .timeline-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .timeline-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            background: rgba(74, 144, 226, 0.8);
+            border: 1px solid rgba(74, 144, 226, 1);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .file-label:hover {
+            background: rgba(74, 144, 226, 1);
+        }
+
+        .loading-state {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" x-data="gameController()" x-init="init(); $nextTick(() => loadDemoData())">>
+        <header class="header">
+            <h1>Harts Game Replay Viewer</h1>
+            <div class="controls">
+                <input type="file" id="replayFile" class="file-input" accept=".json,.txt,.replay">
+                <label for="replayFile" class="file-label">リプレイを読み込み</label>
+                <button @click="loadFromAPI()" class="btn" :disabled="loading" x-text="loading ? '読み込み中...' : 'APIから読み込み'"></button>
+                <button @click="loadDemoData()" class="btn" :disabled="loading">デモモード</button>
+                <button @click="resetReplay()" class="btn" :disabled="!hasData">リセット</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="game-area">
+                <div id="game-container">
+                    <div class="loading" x-show="loading">
+                        <div class="loading-spinner"></div>
+                        <p>ゲームエンジンを初期化中...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>ナビゲーション</h3>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-size: 14px; color: rgba(255, 255, 255, 0.8);">手数で移動:</label>
+                        <div style="display: flex; gap: 5px; align-items: center;">
+                            <input type="number" x-model="jumpToStep" min="1" :max="gameData?.turns?.length || 1" 
+                                   placeholder="手数" 
+                                   style="width: 60px; padding: 4px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; font-size: 12px;">
+                            <button @click="jumpToStepNumber()" class="btn" style="padding: 4px 8px; font-size: 12px;" :disabled="!hasData">飛ぶ</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 14px; color: rgba(255, 255, 255, 0.8);">ラウンドで移動:</label>
+                        <div style="display: flex; gap: 5px; align-items: center;">
+                            <input type="number" x-model="jumpToRound" min="1" :max="maxRounds" 
+                                   placeholder="ラウンド" 
+                                   style="width: 60px; padding: 4px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; font-size: 12px;">
+                            <button @click="jumpToRoundNumber()" class="btn" style="padding: 4px 8px; font-size: 12px;" :disabled="!hasData">飛ぶ</button>
+                        </div>
+                        <div style="font-size: 11px; color: rgba(255, 255, 255, 0.6); margin-top: 2px;" x-show="hasData">
+                            総ラウンド数: <span x-text="maxRounds">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-section">
+                    <h3>ゲーム情報</h3>
+                        <div class="info-item">
+                            <span class="info-label">ゲームタイプ:</span>
+                            <span class="info-value" x-text="gameData?.gameType || '-'"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">開始時刻:</span>
+                            <span class="info-value" x-text="gameData?.startTime ? new Date(gameData.startTime).toLocaleString('ja-JP') : '-'"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">現在のターン:</span>
+                            <span class="info-value" x-text="currentTurnIndex + 1"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">総ターン数:</span>
+                            <span class="info-value" x-text="gameData?.turns?.length || 0"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>プレイヤー</h3>
+                    <ul class="player-list">
+                        <template x-if="!gameData?.players">
+                            <li class="player-item">
+                                <span class="player-name">データを読み込んでください</span>
+                                <span class="player-score">-</span>
+                            </li>
+                        </template>
+                        <template x-for="(player, index) in gameData?.players" :key="player.id || index">
+                            <li class="player-item" :class="{ 'active': currentPlayer === player.id }">
+                                <span class="player-name" x-text="player.name || `Player ${index + 1}`"></span>
+                                <span class="player-score" x-text="player.score || 0"></span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>現在のターン情報</h3>
+                    <div>
+                        <template x-if="!currentTurn">
+                            <p style="color: rgba(255, 255, 255, 0.7); font-size: 14px;">
+                                データを読み込んでください
+                            </p>
+                        </template>
+                        <template x-if="currentTurn">
+                            <div>
+                                <p style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 10px;">
+                                    <span x-text="`ターン ${currentTurnIndex + 1}: ${currentTurn.action}`"></span>
+                                </p>
+                                <template x-if="currentTurn.card">
+                                    <div style="background: rgba(255, 255, 255, 0.1); padding: 10px; border-radius: 4px;">
+                                        <span x-text="window.getSuitSymbol(currentTurn.card.suit) + currentTurn.card.value"></span>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>キーボードショートカット</h3>
+                    <div style="font-size: 12px; color: rgba(255, 255, 255, 0.7); line-height: 1.4;">
+                        <div style="margin-bottom: 5px;"><strong>←/→</strong> : 1手戻す/進む</div>
+                        <div style="margin-bottom: 5px;"><strong>Shift+←/→</strong> : 前/次のターン</div>
+                        <div style="margin-bottom: 5px;"><strong>G</strong> : 手数入力にフォーカス</div>
+                        <div><strong>R</strong> : リセット</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <div class="timeline-controls">
+            <div class="timeline-info">
+                <span x-text="formatTime(currentTurnIndex)">00:00</span>
+                <span x-text="formatTime(gameData?.turns?.length || 0)">00:00</span>
+            </div>
+            <div class="timeline" @click="seekTimeline($event)">
+                <div class="timeline-progress" :style="`width: ${timelineProgress}%`"></div>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                <button @click="toggleSpeed()" class="btn" x-text="`速度: ${playbackSpeed}x`"></button>
+                <div style="display: flex; gap: 5px; align-items: center;">
+                    <button @click="previousStep()" class="btn btn-step" :disabled="currentTurnIndex <= 0" title="1手戻す">◀</button>
+                    <button @click="previousTurn()" class="btn" :disabled="currentTurnIndex <= 0">前のターン</button>
+                    <button @click="nextTurn()" class="btn" :disabled="currentTurnIndex >= (gameData?.turns?.length || 1) - 1">次のターン</button>
+                    <button @click="nextStep()" class="btn btn-step" :disabled="currentTurnIndex >= (gameData?.turns?.length || 1) - 1" title="1手進む">▶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
