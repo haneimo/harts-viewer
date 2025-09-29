@@ -1,0 +1,85 @@
+/* 追加のスタイル（必要に応じて） */
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card.selected {
+    border: 2px solid #4facfe;
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+}
+
+.player-area {
+    position: relative;
+}
+
+.player-area.active {
+    background: rgba(79, 172, 254, 0.1);
+    border-radius: 8px;
+}
+
+.turn-indicator {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background: #4facfe;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.card-animation {
+    animation: cardDeal 0.5s ease-out;
+}
+
+@keyframes cardDeal {
+    from {
+        transform: translateY(-100px) rotate(180deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.trick-pile {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 120px;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-animation {
+    animation: scoreChange 0.5s ease-out;
+}
+
+@keyframes scoreChange {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        color: #4facfe;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
