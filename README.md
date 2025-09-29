@@ -1,6 +1,6 @@
 # Harts Game Replay Viewer
 
-Phaser2Dを使用したHartsゲーム履歴再生ソフトです。
+Phaser 3とAlpine.jsを使用したHartsゲーム履歴再生ソフトです。
 
 ## 機能
 
@@ -10,6 +10,7 @@ Phaser2Dを使用したHartsゲーム履歴再生ソフトです。
 - **ターン操作**: 前後のターンに手動でジャンプ
 - **タイムライン**: クリックで任意のタイミングにシーク
 - **ゲーム情報表示**: プレイヤー情報、スコア、現在のターンを表示
+- **カード表示**: トランプカードのビジュアル表示とアニメーション
 
 ## セットアップ
 
@@ -51,7 +52,7 @@ npm run build
 
 ```json
 {
-  "gameType": "Harts",
+  "gameType": "Hearts",
   "startTime": "2025-09-22T10:00:00Z",
   "players": [
     {"name": "Player 1", "score": 0},
@@ -59,13 +60,21 @@ npm run build
     {"name": "Player 3", "score": 10},
     {"name": "Player 4", "score": 3}
   ],
-  "turns": [
+  "rounds": [
     {
-      "turnNumber": 1,
-      "currentPlayer": 0,
-      "action": "playCard",
-      "card": {"suit": "hearts", "value": "A"},
-      "timestamp": 1000
+      "roundNumber": 1,
+      "tricks": [
+        {
+          "trickNumber": 1,
+          "plays": [
+            {
+              "playerIndex": 0,
+              "card": "C_2",
+              "timestamp": 1000
+            }
+          ]
+        }
+      ]
     }
   ]
 }
@@ -74,6 +83,7 @@ npm run build
 ## 技術スタック
 
 - **Phaser 3**: 2Dゲームエンジン
+- **Alpine.js**: 軽量フロントエンドフレームワーク
 - **Webpack 5**: モジュールバンドラー
 - **Babel**: JavaScriptトランスパイラー
 - **CSS3**: スタイリング
@@ -85,13 +95,15 @@ npm run build
 harts-view/
 ├── src/
 │   ├── index.js          # メインアプリケーションファイル
-│   └── styles.css        # アプリケーションスタイル
+│   ├── styles.css        # アプリケーションスタイル
+│   └── demo-data.json    # デモデータ
 ├── public/
 │   └── index.html        # HTMLテンプレート
 ├── dist/                 # ビルド出力ディレクトリ
 ├── package.json          # NPM設定
 ├── webpack.config.js     # Webpack設定
 ├── .babelrc             # Babel設定
+├── .gitignore           # Git無視ファイル設定
 └── README.md            # このファイル
 ```
 
